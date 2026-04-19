@@ -92,7 +92,10 @@ const clusterSegments = (
     let attached = false
 
     for (const cluster of clusters) {
-      if (Math.abs(cluster[0]!.fixedCoord - segment.fixedCoord) > coordinateSnapTolerance) {
+      if (
+        Math.abs(cluster[0]!.fixedCoord - segment.fixedCoord) >
+        coordinateSnapTolerance
+      ) {
         continue
       }
 
@@ -123,7 +126,8 @@ const snapCluster = (cluster: SegmentRef[], traces: SolvedTracePath[]) => {
   if (cluster.length < 2) return
 
   const snappedCoord =
-    cluster.reduce((sum, segment) => sum + segment.fixedCoord, 0) / cluster.length
+    cluster.reduce((sum, segment) => sum + segment.fixedCoord, 0) /
+    cluster.length
 
   for (const segment of cluster) {
     const trace = traces[segment.traceIndex]!
